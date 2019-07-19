@@ -1,16 +1,11 @@
-# simple_ecommerce
+# Simple Ecommerce App
+* Simple Ecommerce App<br>
+* All rights - Google/ Flutter team for the Base code
 
-A new Flutter application.
+## Amazing color scheme and UI
+* Supplement folder has some crazy stuff -> try to wrap your head around it
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## What next you could do
+* Implement Stripe payments
+* Add a dashboard -> fully dynamic
+* Connect the products to an API
