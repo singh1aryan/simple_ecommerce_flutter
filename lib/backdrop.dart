@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 import 'model/product.dart';
 
 // TODO: Add velocity constant (104)
+const double _kFlingVelocity = 2.0;
 
 class Backdrop extends StatefulWidget {
   final Category currentCategory;
@@ -36,6 +37,17 @@ class _BackdropState extends State<Backdrop>
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
   // TODO: Add AnimationController widget (104)
+  AnimationController _controller;
+
+  @override
+  void initState(){
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: 300),
+      value: 1.0,
+      vsync: this,
+    );
+  }
 
   // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
   Widget _buildStack() {
@@ -47,6 +59,12 @@ class _BackdropState extends State<Backdrop>
         _FrontLayer(child: widget.frontLayer,),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override

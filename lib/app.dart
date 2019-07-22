@@ -3,6 +3,7 @@ import 'package:simple_ecommerce/login.dart';
 import 'home.dart';
 import 'colors.dart';
 import 'backdrop.dart';
+import 'category_menu_page.dart';
 import 'model/product.dart';
 //import 'supplemental/cut_corners_border.dart';
 
@@ -56,7 +57,21 @@ ThemeData _buildShrineTheme() {
   );
 }
 // TODO: Convert ShrineApp to stateful widget (104)
-class ShrineApp extends StatelessWidget {
+class ShrineApp extends StatefulWidget {
+  @override
+  _ShrineAppState createState() => new _ShrineAppState();
+}
+
+
+class _ShrineAppState extends State<ShrineApp> {
+
+  Category _currentCategory = Category.all;
+  void _onCategoryChanged(Category category){
+    setState(() {
+      _currentCategory = category;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +85,10 @@ class ShrineApp extends StatelessWidget {
         // TODO: Pass _currentCategory for frontLayer (104)
         frontLayer: HomePage(),
         // TODO: Change backLayer field value to CategoryMenuPage (104)
-        backLayer: Container(color: kShrinePink100),
+        backLayer: CategoryMenuPage(
+          currentCategory: _currentCategory,
+          onCategoryTap: _onCategoryChanged,
+        ),
         frontTitle: Text('SHRINE'),
         backTitle: Text('MENU'),
     ),
@@ -85,7 +103,9 @@ class ShrineApp extends StatelessWidget {
 
   Route<dynamic> _getRoute(RouteSettings settings) {
     if (settings.name != '/login') {
-      return null;
+      return MaterialPageRoute<void>(
+        builder: (BuildContext context) => LoginPage()
+      );
     }
 
     return MaterialPageRoute<void>(
